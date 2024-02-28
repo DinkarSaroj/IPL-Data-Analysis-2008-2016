@@ -21,6 +21,9 @@ Craft a normalized relational database schema to encapsulate entities and their 
 Implement the schema in MySQL or SQL Server, establish tables, and define relationships.
 Efficiently import the cleaned data into the database.
 
+![image](https://github.com/DinkarSaroj/IPL-Data-Analysis-2008-2016/assets/133124277/94351655-b078-4b57-8353-41afd38837c5)
+
+
 **Phase 2:** Data Wrangling
 Objective: Prepare the datasets for analysis by cleaning and transforming the data.
 Tasks:
@@ -34,6 +37,9 @@ Tasks:
 * Link Power BI with your SQL database.
 * Model the data in Power BI to mirror your schema's relationships and hierarchies.
 * Design an exhaustive dashboard with interactive features that offer clear, actionable insights.
+
+  ![Screenshot 2024-02-27 141031](https://github.com/DinkarSaroj/IPL-Data-Analysis-2008-2016/assets/133124277/83da98ac-4a2e-40e8-a8b2-dd014f32fb5a)
+
 
 **Goals:**
 Performance Analysis: Assess player and team performances over different seasons.
