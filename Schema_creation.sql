@@ -1,6 +1,11 @@
--- CREATE database IPL;
+-- Create the Database 
+CREATE database IPL;
+
+--use Database
 use IPL;
 
+
+--Schema Creation
 
 -- Venue table
 CREATE TABLE Venue (
@@ -17,7 +22,7 @@ CREATE TABLE Wicket_Taken (
     Ball_Id INT,
     Player_Out INT,
     Kind_Out INT,
-    Fielders INT DEFAULT NULL,  -- Assuming Fielders can be NULL
+    Fielders INT NULL,
     Innings_No INT,
     PRIMARY KEY (Match_Id, Over_Id, Ball_Id, Innings_No),
     FOREIGN KEY (Match_Id, Over_Id, Ball_Id, Innings_No) REFERENCES Ball_by_Ball(Match_Id, Over_Id, Ball_Id, Innings_No)
@@ -36,7 +41,7 @@ CREATE TABLE Player (
     Player_Name VARCHAR(255),
     DOB DATE,
     Batting_hand INT,
-    Bowling_skill INT NULL,  -- Assuming Bowling_skill can be NULL
+    Bowling_skill INT NULL,
     Country_Name INT,
     FOREIGN KEY (Country_Name) REFERENCES Country(Country_Id)
 );
@@ -192,17 +197,24 @@ CREATE TABLE Ball_by_Ball (
     FOREIGN KEY (Team_Batting) REFERENCES Team(Team_Id),
     FOREIGN KEY (Team_Bowling) REFERENCES Team(Team_Id)
 );
+
+-- Get the path where you can put your CSVs. 
 SHOW VARIABLES LIKE 'secure_file_priv';
 
-LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/IPL_2016/Batsman_Scored.csv" INTO TABLE Batsman_Scored
+--Loading the CSVs with header in our predefined schema
+
+LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/IPL_2016/Batsman_Scored.csv" INTO TABLE Batsman_Scored -- change csv names and import all the csvs similarly
 FIELDS terminated by ','
 IGNORE 1 LINES;
 
+
+-- modification to schema as per the data
+-- not mandatory
 ALTER TABLE Match_ MODIFY Match_Date VARCHAR(255);
 ALTER TABLE Match_ MODIFY Win_Margin INT NULL;
 TRUNCATE TABLE ipl.bowling_style; -- used to remove all the rows from bowling_style table
 ALTER TABLE player MODIFY DOB VARCHAR(255);
-TRUNCATE TABLE ipl.batsman_scored; -- used to remove all the rows from bowling_style table
+TRUNCATE TABLE ipl.batsman_scored; -- used to remove all the rows from batting_style table
 
 
 
